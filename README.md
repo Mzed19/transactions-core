@@ -27,6 +27,8 @@ Caso algo dê errado, basta seguir manualmente os comandos contidos no arquivo *
 
 ## 📡 Endpoints Principais
 
+A collection para importar os endpoints é o arquivo Transactions Core.postman_collection.json.
+
 | Endpoint        | Método | Descrição                                                   |
 |-----------------|-------|-------------------------------------------------------------|
 | **`/accounts/me`** | GET   | Retorna as informações da conta autenticada.               |
