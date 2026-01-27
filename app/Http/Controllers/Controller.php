@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
@@ -41,15 +42,17 @@ abstract class Controller
 
     public function treatException(Exception $exception): JsonResponse
     {
+        Log::error($exception->getTraceAsString());
+
         return match(get_class($exception)) {
-            'Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException' => $this->sendError(
-                message: $exception->getMessage(),
-                code: Response::HTTP_UNPROCESSABLE_ENTITY
-            ),
-            default => $this->sendError(
-                message: 'Ocorreu um erro inesperado',
-                code: Response::HTTP_INTERNAL_SERVER_ERROR
-            ),
-        };
-    }
+                'Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException' => $this->sendError(
+                    message: $exception->getMessage(),
+                    code: Response::HTTP_UNPROCESSABLE_ENTITY
+                ),
+                default => $this->sendError(
+                    message: 'Ocorreu um erro inesperado',
+                    code: Response::HTTP_INTERNAL_SERVER_ERROR
+                ),
+            };
+        }
 }
