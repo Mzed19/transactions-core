@@ -1,4 +1,4 @@
-# Bank Core
+# Transactions Core
 
 Aplicação backend para gerenciamento de contas bancárias, depósitos e transferências.  
 O projeto expõe API's que permitem criar contas, realizar depósitos, transferências e consultar informações da conta logada.
