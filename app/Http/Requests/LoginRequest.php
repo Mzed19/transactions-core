@@ -9,7 +9,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'document' => 'required|string',
+            'document' => 'required|string|cpf_ou_cnpj|integer',
             'password' => 'required|string',
         ];
     }

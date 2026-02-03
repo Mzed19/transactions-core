@@ -9,7 +9,7 @@ class AccountStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'document' => 'required|string|cpf_ou_cnpj|unique:accounts,document',
+            'document' => 'required|string|cpf_ou_cnpj|unique:accounts,document|integer',
             'password' => 'required|string|min:5',
             'balance' => 'required|numeric|min:0'
         ];

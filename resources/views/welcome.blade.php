@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Transactions Core - Sistema de Transações</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700&display=swap" rel="stylesheet" />
-    
-    <style>
+
+        <style>
         * {
             margin: 0;
             padding: 0;
@@ -458,28 +458,28 @@
                 font-size: 0.875rem;
             }
         }
-    </style>
-</head>
+        </style>
+    </head>
 <body>
     <header>
         <div class="container">
             <nav>
                 <div class="logo">🏦 Transactions Core</div>
                 <div class="nav-links">
-                    @if (Route::has('login'))
-                        @auth
+                        @if (Route::has('login'))
+                                @auth
                             <a href="{{ url('/dashboard') }}">Dashboard</a>
-                        @else
+                                @else
                             <a href="{{ route('login') }}">Login</a>
-                            @if (Route::has('register'))
+                                    @if (Route::has('register'))
                                 <a href="{{ route('register') }}">Registrar</a>
-                            @endif
-                        @endauth
+                                    @endif
+                                @endauth
                     @endif
                 </div>
-            </nav>
+                            </nav>
         </div>
-    </header>
+                    </header>
 
     <main>
         <section class="hero">
@@ -491,7 +491,7 @@
                     <label>Token JWT (salvo automaticamente após login):</label>
                     <input type="text" id="tokenInput" readonly placeholder="Faça login para obter o token">
                 </div>
-            </div>
+                                </div>
         </section>
 
         <section class="endpoints-section">
@@ -512,7 +512,7 @@
                             <form class="endpoint-form" data-endpoint="accounts" data-method="POST">
                                 <div class="form-group">
                                     <label>Document (CPF/CNPJ):</label>
-                                    <input type="text" name="document" placeholder="13857868090" required>
+                                    <input type="text" name="document" placeholder="Somente números" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Password:</label>
@@ -525,7 +525,7 @@
                                 <button type="submit" class="btn-send">Enviar Requisição</button>
                             </form>
                             <div class="response-container" id="response-accounts-POST"></div>
-                        </div>
+                                        </div>
 
                         <!-- Me -->
                         <div class="endpoint-card">
@@ -546,8 +546,8 @@
                             </form>
                             <div class="response-container" id="response-accounts/me-GET"></div>
                         </div>
-                    </div>
-                </div>
+                                        </div>
+                                    </div>
 
                 <!-- Login Section -->
                 <div class="section-group">
@@ -564,7 +564,7 @@
                             <form class="endpoint-form" data-endpoint="login" data-method="POST" data-save-token="true">
                                 <div class="form-group">
                                     <label>Document (CPF/CNPJ):</label>
-                                    <input type="text" name="document" placeholder="68704299185395" required>
+                                    <input type="text" name="document" placeholder="Somente números" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Password:</label>
@@ -574,8 +574,8 @@
                             </form>
                             <div class="response-container" id="response-login-POST"></div>
                         </div>
-                    </div>
-                </div>
+                                </div>
+                                </div>
 
                 <!-- Transactions Section -->
                 <div class="section-group">
@@ -618,7 +618,7 @@
                                 <button type="submit" class="btn-send">Enviar Requisição</button>
                             </form>
                             <div class="response-container" id="response-accounts/transactions/transfers-POST"></div>
-                        </div>
+                                </div>
 
                         <!-- Deposit -->
                         <div class="endpoint-card">
@@ -645,7 +645,7 @@
                                 <button type="submit" class="btn-send">Enviar Requisição</button>
                             </form>
                             <div class="response-container" id="response-deposits-POST"></div>
-                        </div>
+                                </div>
 
                         <!-- All Transactions (Logged User) -->
                         <div class="endpoint-card">
@@ -671,7 +671,7 @@
                             <div class="response-container" id="response-accounts/transactions-GET"></div>
                         </div>
                     </div>
-                </div>
+                                </div>
 
                 <!-- For Admin Section -->
                 <div class="section-group">
@@ -699,7 +699,7 @@
                                 <button type="submit" class="btn-send">Enviar Requisição</button>
                             </form>
                             <div class="response-container" id="response-transactions-GET"></div>
-                        </div>
+                                </div>
 
                         <!-- All Accounts (Admin) -->
                         <div class="endpoint-card">
@@ -724,9 +724,9 @@
                             </form>
                             <div class="response-container" id="response-accounts-GET"></div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                                </div>
+                            </div>
+                        </div>
         </section>
 
         <section class="info-section">
@@ -745,16 +745,17 @@
                 </div>
             </div>
         </section>
-    </main>
+                    </main>
 
     <footer>
         <div class="container">
             <p>Transactions Core v1.0 | PHP v{{ PHP_VERSION }}</p>
         </div>
-    </footer>
+                    </footer>
 
     <script>
-        const API_BASE_URL = 'https://transactions-core-main-erabqb.laravel.cloud/api';
+        // const API_BASE_URL = 'https://transactions-core-main-erabqb.laravel.cloud/api';
+        const API_BASE_URL = 'http://localhost:8000/api';
         
         // Token management
         let authToken = localStorage.getItem('jwt_token') || '';
@@ -771,59 +772,6 @@
                     this.value = authToken;
                 }
             });
-        });
-        
-        // Money mask function - formats as user types
-        function applyMoneyMask(input) {
-            input.addEventListener('input', function(e) {
-                let value = e.target.value;
-                // Remove everything except numbers and decimal point
-                value = value.replace(/[^\d.]/g, '');
-                
-                // Ensure only one decimal point
-                const parts = value.split('.');
-                if (parts.length > 2) {
-                    value = parts[0] + '.' + parts.slice(1).join('');
-                }
-                
-                // Limit to 2 decimal places
-                if (parts.length === 2 && parts[1].length > 2) {
-                    value = parts[0] + '.' + parts[1].substring(0, 2);
-                }
-                
-                // Format with thousands separator
-                if (value) {
-                    const numValue = parseFloat(value);
-                    if (!isNaN(numValue)) {
-                        e.target.value = numValue.toLocaleString('pt-BR', {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        });
-                    } else {
-                        e.target.value = value;
-                    }
-                } else {
-                    e.target.value = '';
-                }
-            });
-            
-            input.addEventListener('blur', function(e) {
-                let value = e.target.value.replace(/[^\d.]/g, '');
-                if (value) {
-                    const numValue = parseFloat(value);
-                    if (!isNaN(numValue)) {
-                        e.target.value = numValue.toLocaleString('pt-BR', {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        });
-                    }
-                }
-            });
-        }
-        
-        // Apply money mask to all money inputs
-        document.querySelectorAll('.money-input').forEach(input => {
-            applyMoneyMask(input);
         });
         
         // Function to convert money mask to number
@@ -952,7 +900,7 @@
                             <span class="response-status ${response.ok ? 'status-success' : 'status-error'}">
                                 Status: ${response.status} ${response.statusText}
                             </span>
-                        </div>
+                </div>
                         <div class="response-body">${JSON.stringify(data, null, 2)}</div>
                     `;
                     responseContainer.classList.add('active');
@@ -961,7 +909,7 @@
                     responseContainer.innerHTML = `
                         <div class="response-header">
                             <span class="response-status status-error">Erro de Conexão</span>
-                        </div>
+            </div>
                         <div class="response-body">${error.message}</div>
                     `;
                     responseContainer.classList.add('active');
@@ -972,5 +920,5 @@
             });
         });
     </script>
-</body>
+    </body>
 </html>
