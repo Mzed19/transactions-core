@@ -684,7 +684,7 @@
                                 <div class="endpoint-path">/transactions</div>
                             </div>
                             <div class="endpoint-description">
-                                Retorna todas as transações do sistema (apenas admin). Requer token JWT de admin.
+                                Retorna todas as transações do sistema. Requer token JWT de admin.
                             </div>
                             <form class="endpoint-form" data-endpoint="transactions" data-method="GET" data-auth="true">
                                 <div class="form-group">
@@ -708,7 +708,7 @@
                                 <div class="endpoint-path">/accounts</div>
                             </div>
                             <div class="endpoint-description">
-                                Retorna todas as contas do sistema (apenas admin). Requer token JWT de admin.
+                                Retorna todas as contas do sistema. Requer token JWT de admin.
                             </div>
                             <form class="endpoint-form" data-endpoint="accounts" data-method="GET" data-auth="true">
                                 <div class="form-group">
